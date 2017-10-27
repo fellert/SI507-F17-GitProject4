@@ -1,4 +1,4 @@
-# One comment to first two lines
+# Cache data lines changed by Akio Kakishima
 # OAuth1 Code to access data from the Twitter API...
 import requests_oauthlib
 import webbrowser
@@ -160,9 +160,12 @@ res = r.json() # get a Python object in a variable, you now know it's a dictiona
 print(list(res.keys())) # print the dictionary's keys
 
 # cache the data we got back from the request
-f = open('nested.txt', 'w')
-f.write(json.dumps(res))
-f.close()
+with open('nested.txt', 'w') as f:
+    f.write(json.dumps(res))
+
+# f = open('nested.txt', 'w')
+# f.write(json.dumps(res))
+# f.close()
 
 # do some investigation with the cached data
 fileref = open("nested.txt","r")
